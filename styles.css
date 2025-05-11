@@ -8,13 +8,17 @@
   box-sizing: border-box;
 }
 
+/* Ensure no horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
 /* ─── Base Styles ───────────────────────────────────────── */
 body {
   background: #0c0c0c; /* Ultra-dark page background */
   color: #f0f0f0;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  overflow-x: hidden;
 }
 
 .container {
@@ -31,8 +35,8 @@ body {
 
 .header h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem; /* Adjusted for smaller screens */
-  background: linear-gradient(45deg, #c637ff, #00a2ff);
+  font-size: 3rem; /* Slightly smaller for better mobile fit */
+  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 10px;
@@ -42,7 +46,7 @@ body {
 
 .welcome {
   font-size: 1.5rem;
-  margin-bottom: 10px;  /* Reduced gap before quote-banner */
+  margin-bottom: 10px; /* Reduced gap before quote banner */
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   animation-delay: 0.3s;
@@ -53,7 +57,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   margin: 20px auto;
-  background: rgba(230, 230, 250, 0.15);  /* Subtle lavender tint */
+  background: rgba(230, 230, 250, 0.15); /* Subtle lavender tint; adjust if desired */
   border: 1px solid rgba(230, 230, 250, 0.3);
   backdrop-filter: blur(4px);
   text-align: center;
@@ -93,7 +97,6 @@ body {
   z-index: 1000;
   transition: transform 0.3s ease, background 0.3s ease;
 }
-
 .contact-fixed:hover {
   transform: scale(1.1);
   background: rgba(55, 55, 70, 0.8);
@@ -128,7 +131,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #c637ff, #00a2ff);
+  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -212,17 +215,17 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #c637ff, #00a2ff);
+  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
   -webkit-background-clip: text;
   color: transparent;
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
 }
-/* Default state: no animation on buttons */
+/* Default state for skills buttons */
 .skills button {
   padding: 12px 20px;
   font-size: 1.1rem;
@@ -241,8 +244,7 @@ body {
   opacity: 0; /* Initially hidden */
 }
 
-/* When the skills container scrolls into view, add the .visible class from JavaScript;
-   then each button will animate sequentially */
+/* When the skills container gets .visible, animate buttons sequentially */
 .skills.visible button {
   animation: fadeInUp 0.8s forwards;
 }
@@ -253,7 +255,10 @@ body {
 .skills.visible button:nth-child(5) { animation-delay: 1s; }
 .skills.visible button:nth-child(6) { animation-delay: 1.2s; }
 .skills.visible button:nth-child(7) { animation-delay: 1.4s; }
-.skills.visible button:nth-child(8) { animation-delay: 1.6s; }
+/* For the last row, force buttons 7 and 8 to be centered */
+.skills.visible button:nth-child(7) { grid-column: 2; }
+.skills.visible button:nth-child(8) { grid-column: 3; }
+
 .skills button:hover {
   transform: scale(1.03);
   background: rgba(40, 42, 60, 1);
@@ -262,11 +267,12 @@ body {
 /* ─── Mobile Responsiveness for Achievements ─────────── */
 @media (max-width: 768px) {
   .achievement-wrapper {
-    flex-wrap: wrap;
+    flex-direction: column;
   }
   .achievement-card {
-    width: calc(50% - 15px);
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 }
 
@@ -284,12 +290,12 @@ footer {
 .footer-links a {
   margin: 0 10px;
   text-decoration: none;
-  color:rgba(215, 32, 231, 0.788);
+  color: #6a11cb;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 .footer-links a:hover {
-  color: #ff0000;
+  color: #2575fc;
 }
 footer p {
   font-size: 0.9rem;
