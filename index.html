@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Ensure proper responsive scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rakshan's Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
@@ -20,11 +21,6 @@
         <span class="author">– Chris Grosser</span>
       </section>
 
-      <!-- Contact Button (Static, placed below the quote) -->
-      <div class="contact-container">
-        <button class="contact-button">Contact</button>
-      </div>
-
       <!-- Achievements Section -->
       <section class="achievements">
         <h2>Achievements</h2>
@@ -37,20 +33,24 @@
           </div>
           <div class="achievement-card">
             <h3>Typing Speed</h3>
-            <p>100 WPM for 120 sec, 90–95 WPM for 300 sec, 85–90 WPM for 600 sec.</p>
+            <p>
+              100 WPM for 120 sec, 90–95 WPM for 300 sec, 85–90 WPM for 600 sec.
+            </p>
             <div class="tags">Typing Academy | Type Monkey</div>
             <a href="#">Learn More</a>
           </div>
           <div class="achievement-card">
             <h3>Flappy Bird Game</h3>
-            <p>Flappy Bird in Scratch with custom gravity and levels (Won Award).</p>
+            <p>
+              Flappy Bird in Scratch with custom gravity and levels (Won Award).
+            </p>
             <div class="tags">Scratch</div>
             <a href="#">Learn More</a>
           </div>
         </div>
       </section>
 
-      <!-- Interests & Skills Section -->
+      <!-- Interests &amp; Skills Section -->
       <section class="skills-section">
         <h2>Interests &amp; Skills</h2>
         <div class="skills">
@@ -63,10 +63,10 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- Footer Section -->
       <footer>
         <div class="footer-links">
-          <span>Find me @ </span>
+          <span>Find me @</span>
           <a href="https://www.reddit.com/user/Rak_the_rock" target="_blank">Reddit</a>
           <a href="https://github.com/Raktherock/" target="_blank">Github</a>
           <a href="https://t.me/RakshanKumaraa" target="_blank">Telegram</a>
@@ -77,6 +77,10 @@
         <p>See you again, byeee</p>
       </footer>
     </div>
+
+    <!-- Fixed Contact Button at Top-Right -->
+    <button class="contact-fixed">Contact</button>
+
     <script src="script.js"></script>
   </body>
 </html>
