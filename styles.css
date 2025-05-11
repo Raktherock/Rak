@@ -1,7 +1,7 @@
 /* ─── Import Google Fonts ───────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
 
-/* ─── Universal Reset & Prevent Horizontal Scroll ── */
+/* ─── Universal Reset & Prevent Horizontal Scrolling ─ */
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +32,7 @@ body {
 }
 .header h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem;  /* Desktop size */
+  font-size: 3rem; /* Desktop size; mobile override below */
   background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
   color: transparent;
@@ -41,20 +41,20 @@ body {
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 .welcome {
-  font-size: 0.9rem; /* Reduced by ~40% from 1.5rem */
+  font-size: 1.5rem; /* Default size; mobile override below */
   margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   animation-delay: 0.3s;
 }
 
-/* ─── Quote Banner (Rounded Box with Fade-In) ─────────── */
+/* ─── Quote Banner Section ───────────────────────────── */
 .quote-banner {
   display: inline-block;
   padding: 10px 20px;
   margin: 20px auto;
-  background: rgba(230, 230, 250, 0.15);
-  border: 1px solid rgba(230, 230, 250, 0.3);
+  background: rgba(230,230,250,0.15);
+  border: 1px solid rgba(230,230,250,0.3);
   backdrop-filter: blur(4px);
   text-align: center;
   border-radius: 20px;
@@ -74,27 +74,29 @@ body {
   color: #9fa8da;
 }
 
-/* ─── Contact Button (Static, Not Fixed) ───────────── */
-.contact-container {
-  margin: 20px auto;
-  text-align: center;
-}
-.contact-button {
-  padding: 8px 16px;
-  font-size: 0.8rem;
+/* ─── Fixed Contact Button (Top-Right, Permanent) ───── */
+.contact-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 16px; /* Slightly smaller */
+  font-size: 0.9rem;
   border: none;
   border-radius: 6px;
-  background: #c637ff;
+  background: rgba(55,55,70,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
   color: #fff;
   cursor: pointer;
+  z-index: 1000;
   transition: transform 0.3s ease, background 0.3s ease;
 }
-.contact-button:hover {
+.contact-fixed:hover {
   transform: scale(1.05);
-  background: #00a2ff;
+  background: rgba(55,55,70,0.8);
 }
 
-/* ─── Achievements Section ───────────────────────────────── */
+/* ─── Achievements Section ───────────────────────────── */
 .achievements {
   margin: 60px 0;
   opacity: 0;
@@ -103,7 +105,7 @@ body {
 }
 .achievements h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Desktop size; mobile override below */
   margin-bottom: 40px;
   background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
@@ -118,14 +120,14 @@ body {
 .achievement-card {
   position: relative;
   width: 360px;
-  background: rgba(40, 42, 60, 0.8);
+  background: rgba(40,42,60,0.8);
   backdrop-filter: blur(8px);
   padding: 25px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-      box-shadow 0.5s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1), 
+              box-shadow 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
   text-align: center;
@@ -136,7 +138,7 @@ body {
 }
 .achievement-card:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 .achievement-card::before {
   content: "";
@@ -172,7 +174,8 @@ body {
 }
 .achievement-card a {
   text-decoration: none;
-  color: #c637ff;
+  /* New Learn More link color */
+  color: #6216c7;
   font-weight: bold;
 }
 
@@ -185,7 +188,7 @@ body {
 }
 .skills-section h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Desktop size; mobile override below */
   margin-bottom: 40px;
   background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
@@ -193,17 +196,16 @@ body {
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
   justify-content: center;
 }
-/* Default state for skills buttons */
 .skills button {
   padding: 12px 20px;
   font-size: 1.1rem;
-  background: rgba(40, 42, 60, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(40,42,60,0.8);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 25px;
   backdrop-filter: blur(5px);
   color: #fff;
@@ -216,7 +218,6 @@ body {
   justify-content: center;
   opacity: 0;
 }
-/* When skills container is visible, animate buttons sequentially */
 .skills.visible button {
   animation: fadeInUp 0.8s forwards;
 }
@@ -228,36 +229,10 @@ body {
 .skills.visible button:nth-child(6) { animation-delay: 1.2s; }
 .skills button:hover {
   transform: scale(1.03);
-  background: rgba(40, 42, 60, 1);
+  background: rgba(40,42,60,1);
 }
 
-/* ─── Mobile Overrides ─────────────────────────────────── */
-@media (max-width: 768px) {
-  /* Reduce header title and headings by ~30% */
-  .header h1 {
-    font-size: 2.1rem;
-  }
-  .achievements h2,
-  .skills-section h2 {
-    font-size: 1.75rem;
-  }
-  /* Achievements: stack vertically with plenty spacing */
-  .achievement-wrapper {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .achievement-card {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-  /* Skills: 2 rows of 3 items (since there are 6 buttons) */
-  .skills {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ─── Footer ───────────────────────────────────────────────── */
+/* ─── Footer Section ───────────────────────────────────── */
 footer {
   margin-top: 40px;
   padding: 20px 0;
@@ -267,18 +242,73 @@ footer {
 }
 .footer-links {
   margin-bottom: 10px;
+  transition: background 0.5s ease;
+}
+.footer-links.highlight {
+  animation: highlightAnim 2s ease-out;
+}
+@keyframes highlightAnim {
+  0% { background-color: rgba(23,76,145,0.3); }
+  100% { background-color: transparent; }
 }
 .footer-links a {
   margin: 0 10px;
   text-decoration: none;
-  color: #c637ff;
+  /* New color for footer hyperlinks */
+  color: #b700ff;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 .footer-links a:hover {
-  color: #00a2ff;
+  color: #00ccff;
 }
 footer p {
   font-size: 0.9rem;
   color: #777;
+}
+
+/* ─── Keyframes for Animations ────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Mobile Overrides ───────────────────────────────── */
+@media (max-width: 768px) {
+  /* Reduce header title & headings sizes by roughly 30% */
+  .header h1 {
+    font-size: 2.1rem;
+  }
+  .achievements h2,
+  .skills-section h2 {
+    font-size: 1.75rem;
+  }
+  /* Reduce welcome text size accordingly */
+  .welcome {
+    font-size: 0.9rem;
+  }
+  /* Achievements: stack vertically with ample spacing */
+  .achievement-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .achievement-card {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  /* Skills: 2 rows of 3 items (6 buttons total) */
+  .skills {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
