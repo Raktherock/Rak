@@ -1,26 +1,24 @@
 /* ─── Import Google Fonts ───────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
 
-/* ─── Universal Reset ───────────────────────────────────── */
+/* ─── Universal Reset & Prevent Horizontal Scroll ── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* Ensure no horizontal scroll */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
 /* ─── Base Styles ───────────────────────────────────────── */
 body {
-  background: #0c0c0c; /* Ultra-dark page background */
+  background: #0c0c0c;
   color: #f0f0f0;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
-
 .container {
   width: 90%;
   max-width: 1200px;
@@ -32,32 +30,30 @@ body {
 .header {
   padding: 40px 0;
 }
-
 .header h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem; /* Slightly smaller for better mobile fit */
-  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
+  font-size: 3rem; /* Desktop size */
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
-
 .welcome {
   font-size: 1.5rem;
-  margin-bottom: 10px; /* Reduced gap before quote banner */
+  margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   animation-delay: 0.3s;
 }
 
-/* ─── Quote Banner (Rounded Box) with Fade-In ─────────── */
+/* ─── Quote Banner (Rounded Box with Fade-In) ─────────── */
 .quote-banner {
   display: inline-block;
   padding: 10px 20px;
   margin: 20px auto;
-  background: rgba(230, 230, 250, 0.15); /* Subtle lavender tint; adjust if desired */
+  background: rgba(230, 230, 250, 0.15);
   border: 1px solid rgba(230, 230, 250, 0.3);
   backdrop-filter: blur(4px);
   text-align: center;
@@ -66,13 +62,11 @@ body {
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   animation-delay: 0.6s;
 }
-
 .quote-banner p {
   font-size: 1rem;
   color: #cccccc;
   margin: 0;
 }
-
 .quote-banner .author {
   display: block;
   margin-top: 5px;
@@ -80,7 +74,7 @@ body {
   color: #9fa8da;
 }
 
-/* ─── Fixed Contact Button in Top-Right ─────────────────── */
+/* ─── Fixed Contact Button ───────────────────────────── */
 .contact-fixed {
   position: fixed;
   top: 20px;
@@ -113,7 +107,6 @@ body {
     transform: translateY(0);
   }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -126,23 +119,20 @@ body {
   animation: fadeIn 1.2s forwards;
   animation-delay: 0.5s;
 }
-
 .achievements h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
   -webkit-background-clip: text;
   color: transparent;
 }
-
 .achievement-wrapper {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   gap: 30px;
 }
-
 .achievement-card {
   position: relative;
   width: 360px;
@@ -215,17 +205,17 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Original gradient */
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
   -webkit-background-clip: text;
   color: transparent;
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
   gap: 10px;
   justify-items: center;
 }
-/* Default state for skills buttons */
+/* Default state (desktop) for skills buttons */
 .skills button {
   padding: 12px 20px;
   font-size: 1.1rem;
@@ -241,9 +231,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
 }
-
 /* When the skills container gets .visible, animate buttons sequentially */
 .skills.visible button {
   animation: fadeInUp 0.8s forwards;
@@ -254,18 +243,30 @@ body {
 .skills.visible button:nth-child(4) { animation-delay: 0.8s; }
 .skills.visible button:nth-child(5) { animation-delay: 1s; }
 .skills.visible button:nth-child(6) { animation-delay: 1.2s; }
-.skills.visible button:nth-child(7) { animation-delay: 1.4s; }
-/* For the last row, force buttons 7 and 8 to be centered */
-.skills.visible button:nth-child(7) { grid-column: 2; }
-.skills.visible button:nth-child(8) { grid-column: 3; }
-
+.skills.visible button:nth-child(7) { /* Default placement for desktop */
+  /* No override, let it auto-place */
+  animation-delay: 1.4s;
+}
+.skills.visible button:nth-child(8) {
+  animation-delay: 1.6s;
+}
 .skills button:hover {
   transform: scale(1.03);
   background: rgba(40, 42, 60, 1);
 }
 
-/* ─── Mobile Responsiveness for Achievements ─────────── */
+/* ─── Mobile Overrides ─────────────────────────────────── */
 @media (max-width: 768px) {
+  /* Reduce header title and gradient headings by ~30% */
+  .header h1 {
+    font-size: 2.1rem;
+  }
+  .achievements h2,
+  .skills-section h2 {
+    font-size: 1.75rem;
+  }
+
+  /* Achievements: make them stack vertically */
   .achievement-wrapper {
     flex-direction: column;
   }
@@ -274,6 +275,28 @@ body {
     max-width: 100%;
     margin-bottom: 20px;
   }
+
+  /* Customize the skills grid: 3 in row 1, 3 in row 2, then 2 centered */
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Define grid-template-areas to force a 3-3-2 layout */
+    grid-template-areas:
+      "a b c ."
+      "d e f ."
+      ". g h .";
+    gap: 10px;
+    justify-items: center;
+  }
+  /* Assign grid areas to buttons */
+  .skills button:nth-child(1) { grid-area: a; }
+  .skills button:nth-child(2) { grid-area: b; }
+  .skills button:nth-child(3) { grid-area: c; }
+  .skills button:nth-child(4) { grid-area: d; }
+  .skills button:nth-child(5) { grid-area: e; }
+  .skills button:nth-child(6) { grid-area: f; }
+  .skills button:nth-child(7) { grid-area: g; }
+  .skills button:nth-child(8) { grid-area: h; }
 }
 
 /* ─── Footer ───────────────────────────────────────────────── */
