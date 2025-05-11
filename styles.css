@@ -33,7 +33,7 @@ body {
 .header h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 3rem; /* Desktop size */
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 10px;
@@ -41,7 +41,7 @@ body {
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 .welcome {
-  font-size: 1.5rem;
+  font-size: 0.9rem; /* Reduced from 1.5rem (~40% reduction) */
   margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
@@ -74,42 +74,24 @@ body {
   color: #9fa8da;
 }
 
-/* ─── Fixed Contact Button ───────────────────────────── */
-.contact-fixed {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 14px 28px;
-  font-size: 1rem;
+/* ─── Contact Button (Static) ─────────────────────────── */
+.contact-container {
+  margin: 20px auto;
+  text-align: center;
+}
+.contact-button {
+  padding: 8px 16px;
+  font-size: 0.8rem;
   border: none;
-  border-radius: 8px;
-  background: rgba(55, 55, 70, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
+  border-radius: 6px;
+  background: #c637ff;
   color: #fff;
   cursor: pointer;
-  z-index: 1000;
   transition: transform 0.3s ease, background 0.3s ease;
 }
-.contact-fixed:hover {
-  transform: scale(1.1);
-  background: rgba(55, 55, 70, 0.8);
-}
-
-/* ─── Keyframes for Animations ─────────────────────────── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.contact-button:hover {
+  transform: scale(1.05);
+  background: #00a2ff;
 }
 
 /* ─── Achievements Section ───────────────────────────────── */
@@ -123,7 +105,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -190,7 +172,7 @@ body {
 }
 .achievement-card a {
   text-decoration: none;
-  color: #6a11cb;
+  color: #c637ff;
   font-weight: bold;
 }
 
@@ -205,17 +187,18 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
   color: transparent;
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
+  justify-content: center;
 }
-/* Default state (desktop) for skills buttons */
+/* Default state for skills buttons (desktop) */
 .skills button {
   padding: 12px 20px;
   font-size: 1.1rem;
@@ -243,13 +226,6 @@ body {
 .skills.visible button:nth-child(4) { animation-delay: 0.8s; }
 .skills.visible button:nth-child(5) { animation-delay: 1s; }
 .skills.visible button:nth-child(6) { animation-delay: 1.2s; }
-.skills.visible button:nth-child(7) { /* Default placement for desktop */
-  /* No override, let it auto-place */
-  animation-delay: 1.4s;
-}
-.skills.visible button:nth-child(8) {
-  animation-delay: 1.6s;
-}
 .skills button:hover {
   transform: scale(1.03);
   background: rgba(40, 42, 60, 1);
@@ -257,7 +233,7 @@ body {
 
 /* ─── Mobile Overrides ─────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Reduce header title and gradient headings by ~30% */
+  /* Reduce header title and headings by ~30% */
   .header h1 {
     font-size: 2.1rem;
   }
@@ -265,38 +241,20 @@ body {
   .skills-section h2 {
     font-size: 1.75rem;
   }
-
-  /* Achievements: make them stack vertically */
+  /* Achievements: stack vertically with ample spacing */
   .achievement-wrapper {
     flex-direction: column;
+    gap: 20px;
   }
   .achievement-card {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
   }
-
-  /* Customize the skills grid: 3 in row 1, 3 in row 2, then 2 centered */
+  /* Skills: 2 rows of 3 items, ensuring centering */
   .skills {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* Define grid-template-areas to force a 3-3-2 layout */
-    grid-template-areas:
-      "a b c ."
-      "d e f ."
-      ". g h .";
-    gap: 10px;
-    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
   }
-  /* Assign grid areas to buttons */
-  .skills button:nth-child(1) { grid-area: a; }
-  .skills button:nth-child(2) { grid-area: b; }
-  .skills button:nth-child(3) { grid-area: c; }
-  .skills button:nth-child(4) { grid-area: d; }
-  .skills button:nth-child(5) { grid-area: e; }
-  .skills button:nth-child(6) { grid-area: f; }
-  .skills button:nth-child(7) { grid-area: g; }
-  .skills button:nth-child(8) { grid-area: h; }
 }
 
 /* ─── Footer ───────────────────────────────────────────────── */
@@ -313,12 +271,12 @@ footer {
 .footer-links a {
   margin: 0 10px;
   text-decoration: none;
-  color: #6a11cb;
+  color: #c637ff;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 .footer-links a:hover {
-  color: #2575fc;
+  color: #00a2ff;
 }
 footer p {
   font-size: 0.9rem;
