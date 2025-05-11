@@ -32,7 +32,7 @@ body {
 }
 .header h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem; /* Desktop size */
+  font-size: 3rem;  /* Desktop size */
   background: linear-gradient(45deg, #c637ff, #00a2ff);
   -webkit-background-clip: text;
   color: transparent;
@@ -41,7 +41,7 @@ body {
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 .welcome {
-  font-size: 0.9rem; /* Reduced from 1.5rem (~40% reduction) */
+  font-size: 0.9rem; /* Reduced by ~40% from 1.5rem */
   margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
@@ -74,7 +74,7 @@ body {
   color: #9fa8da;
 }
 
-/* ─── Contact Button (Static) ─────────────────────────── */
+/* ─── Contact Button (Static, Not Fixed) ───────────── */
 .contact-container {
   margin: 20px auto;
   text-align: center;
@@ -125,7 +125,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-              box-shadow 0.5s ease;
+      box-shadow 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
   text-align: center;
@@ -193,12 +193,12 @@ body {
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 10px;
   justify-items: center;
   justify-content: center;
 }
-/* Default state for skills buttons (desktop) */
+/* Default state for skills buttons */
 .skills button {
   padding: 12px 20px;
   font-size: 1.1rem;
@@ -216,7 +216,7 @@ body {
   justify-content: center;
   opacity: 0;
 }
-/* When the skills container gets .visible, animate buttons sequentially */
+/* When skills container is visible, animate buttons sequentially */
 .skills.visible button {
   animation: fadeInUp 0.8s forwards;
 }
@@ -241,7 +241,7 @@ body {
   .skills-section h2 {
     font-size: 1.75rem;
   }
-  /* Achievements: stack vertically with ample spacing */
+  /* Achievements: stack vertically with plenty spacing */
   .achievement-wrapper {
     flex-direction: column;
     gap: 20px;
@@ -251,7 +251,7 @@ body {
     max-width: 100%;
     margin-bottom: 20px;
   }
-  /* Skills: 2 rows of 3 items, ensuring centering */
+  /* Skills: 2 rows of 3 items (since there are 6 buttons) */
   .skills {
     grid-template-columns: repeat(3, 1fr);
   }
